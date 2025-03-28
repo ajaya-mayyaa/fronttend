@@ -1,0 +1,333 @@
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0d0d0d;
+  color: #e0e0e0;
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background Animation */
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 4cm;
+  opacity: 0.7; /* Adjust visibility */
+  pointer-events: none; /* Prevent interactions */
+}
+
+/* Home Container */
+.home-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Changed to flex-start to allow scrolling */
+  padding: 40px 20px;
+  background: #0d0d0d;
+  text-align: center;
+  position: relative;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Animated Header */
+.animated-text {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  animation: glowWhite 1.5s infinite alternate, fadeIn 1.5s ease-in-out;
+}
+
+/* Description */
+.description {
+  font-size: 1.2rem;
+  max-width: 700px;
+  color: #c0c0c0;
+  margin: 15px 0 40px;
+  animation: fadeIn 1.5s ease-in-out;
+  text-align: center;
+}
+
+/* 3D Character */
+.animated-character {
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Explore Button */
+.explore-button {
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0d0d0d;
+  background: linear-gradient(135deg, #ffffff, #b0b0b0);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: fit-content;
+  min-width: 180px;
+  margin-top: 20px;
+  z-index: 50; /* Ensure it doesn't overlap with floating elements */
+}
+
+.explore-button:hover {
+  background: linear-gradient(135deg, #c0c0c0, #e0e0e0);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.9);
+  animation: pulseGlow 1.5s infinite alternate;
+}
+
+/* About Us Button */
+.about-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ffffff, #b0b0b0);
+  color: #0d0d0d;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.5);
+  z-index: 50; /* Ensure it doesn't overlap with floating elements */
+}
+
+.about-button:hover {
+  background: linear-gradient(135deg, #c0c0c0, #e0e0e0);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.9);
+  animation: pulseGlow 1.5s infinite alternate;
+}
+
+/* About Us Container */
+.about-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05); /* Subtle glassmorphism effect */
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
+  text-align: left;
+  position: relative;
+  min-height: calc(100vh - 80px); /* Ensure it fits within viewport with padding */
+  overflow: visible; /* Allow content to be fully visible */
+}
+
+/* Glowing Stars Background for About Us */
+.about-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: -1;
+  pointer-events: none;
+  animation: glowingStars 10s infinite linear;
+}
+
+@keyframes glowingStars {
+  0% {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.5)" /><circle cx="50" cy="20" r="1" fill="rgba(255,255,255,0.7)" /><circle cx="80" cy="60" r="1.5" fill="rgba(255,255,255,0.6)" /><circle cx="30" cy="70" r="1" fill="rgba(255,255,255,0.8)" /><circle cx="60" cy="40" r="2" fill="rgba(255,255,255,0.5)" /></svg>')
+      repeat;
+    background-size: 100px 100px;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    background-position: 100px 100px;
+    opacity: 0.3;
+  }
+}
+
+/* About Us Header */
+.about-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+/* About Us Title */
+.about-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  text-align: center;
+  margin: 0;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Back Button in AboutUs */
+.back-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0d0d0d;
+  background: linear-gradient(135deg, #ffffff, #b0b0b0);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.5);
+  z-index: 50; /* Ensure it doesn't overlap with other elements */
+}
+
+.back-button:hover {
+  background: linear-gradient(135deg, #c0c0c0, #e0e0e0);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.9);
+  animation: pulseGlow 1.5s infinite alternate;
+}
+
+/* About Us Subtitle */
+.about-subtitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 40px 0 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* About Us Description */
+.about-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #c0c0c0;
+  margin-bottom: 25px;
+}
+
+/* About Us List */
+.about-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 25px;
+}
+
+.about-list li {
+  font-size: 1.1rem;
+  margin: 15px 0;
+  padding-left: 30px;
+  position: relative;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+.about-list li:before {
+  content: "➜";
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  position: absolute;
+  left: 0;
+  top: 2px;
+}
+
+/* Animations */
+@keyframes glowWhite {
+  from { text-shadow: 0 0 10px rgba(255, 255, 255, 0.6); }
+  to { text-shadow: 0 0 20px rgba(255, 255, 255, 0.9); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  from { box-shadow: 0 10px 25px rgba(255, 255, 255, 0.6); }
+  to { box-shadow: 0 15px 35px rgba(255, 255, 255, 1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .animated-text {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .animated-character {
+    width: 200px;
+    height: 200px;
+  }
+
+  .explore-button {
+    padding: 12px 30px;
+    font-size: 1rem;
+    min-width: 150px;
+  }
+
+  .about-button {
+    top: 8px; /* Adjust position to avoid overlap */
+    right: 8px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.5rem;
+    margin: 30px 0 15px;
+  }
+
+  .about-container {
+    margin: 20px;
+    padding: 20px;
+    min-height: auto; /* Allow container to grow with content */
+  }
+
+  .about-description,
+  .about-list li {
+    font-size: 1rem;
+  }
+
+  .back-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .about-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .home-container {
+    padding: 60px 10px; /* Reduce padding on smaller screens */
+  }
+}
