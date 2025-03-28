@@ -1,0 +1,157 @@
+/* Admin Container */
+.admin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 95vh;
+  background-color: #121212;
+  width: 100%;
+  padding: 20px; /* Added padding for small screens */
+}
+
+/* Inner Container */
+.inner-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  width: 90%;
+  max-width: 1200px; /* Limit max width */
+  height: auto;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+/* Admin Content */
+.admin-content {
+  text-align: center;
+  padding: 20px;
+  color: #ffffff;
+}
+
+/* Lottie Animation Styling */
+.lottie-left, .lottie-right {
+  width: 250px;
+  height: 250px;
+}
+
+/* Buttons */
+.logout-btn, .refresh-btn {
+  margin: 10px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #333333;
+  color: #ffffff;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.logout-btn:hover, .refresh-btn:hover {
+  background-color: #555555;
+}
+
+/* User Info */
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: #2a2a2a;
+  color: #ffffff;
+  margin: 6px 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+
+/* Ensure user details take full space, pushing delete button to the right */
+.user-details {
+  flex-grow: 1;
+}
+
+/* Delete Button */
+.delete-btn {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+  margin-left: auto;  /* Moves the button to the right */
+  margin-bottom: 0.5cm;
+  margin-top: 0.5cm;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000;
+}
+
+/* Loading & Error Messages */
+.loading-message, .error-message {
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+/* 🔹 RESPONSIVE DESIGN 🔹 */
+
+/* Tablet View (Max Width: 768px) */
+@media (max-width: 768px) {
+  .inner-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .lottie-left, .lottie-right {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .logout-btn, .refresh-btn {
+    width: 100%; /* Full width buttons */
+    padding: 10px;
+  }
+
+  .user-info {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .delete-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* Mobile View (Max Width: 480px) */
+@media (max-width: 480px) {
+  .lottie-left, .lottie-right {
+    width: 120px;
+    height: 120px;
+  }
+
+  .inner-container {
+    padding: 10px;
+  }
+
+  .admin-content {
+    padding: 10px;
+  }
+
+  .logout-btn, .refresh-btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .delete-btn {
+    padding: 8px;
+  }
+}
