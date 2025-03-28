@@ -1,0 +1,179 @@
+/* Reset all margins, padding, and box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure HTML, body, and root take full height and width */
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  background-color: #000000; /* Black background for the entire page */
+}
+
+/* Main container styling */
+main {
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem; /* Space between left and right sections */
+  background-color: #000000; /* Black background */
+}
+
+/* Left and right sections */
+main .left,
+main .right {
+  height: 100%;
+  flex-basis: 50%; /* Each section takes 50% of the width */
+  border-radius: 0.7rem; /* Rounded corners */
+  background-color: #0c0c0c; /* Dark gray background */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for light effect */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glowing light effect for sections */
+main .left::before,
+main .right::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+  animation: rotateLight 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotateLight {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Left section styling */
+main .left {
+  background-color: #000000; /* Black background */
+}
+
+/* Code editor styling */
+.left .code,
+.code pre,
+.code pre code {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  border-radius: 0.7rem; /* Rounded corners */
+  background-color: #0c0c0c; /* Dark gray background */
+  color: #ffffff; /* White text */
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 1rem;
+  overflow: auto;
+}
+
+/* Review button styling */
+main .left .review {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+  color: #ffffff; /* White text */
+  padding: 0.5rem 2rem;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+  border-radius: 0.7rem; /* Rounded corners */
+  border: none;
+  transition: all 0.3s ease;
+}
+
+main .left .review:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb); /* Reverse gradient on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); /* Glow effect on hover */
+}
+
+/* Right section styling */
+main .right {
+  background-color: #0c0c0c; /* Dark gray background */
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  overflow: auto; /* Enable scrolling if content overflows */
+  color: #ffffff; /* White text */
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a; /* Dark track */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6a11cb; /* Purple thumb */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2575fc; /* Blue thumb on hover */
+}
+
+/* Logout button styling */
+.logout-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 0.7rem; /* Rounded corners */
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+  color: #ffffff; /* White text */
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10; /* Ensure it's above other elements */
+}
+
+.logout-btn:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb); /* Reverse gradient on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); /* Glow effect on hover */
+}
+
+/* Review button styling */
+.review-btn {
+  position: absolute;
+  bottom: 1cm;
+  right: 1cm;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 0.7rem; /* Rounded corners */
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+  color: #ffffff; /* White text */
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10; /* Ensure it's above other elements */
+}
+
+.review-btn:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb); /* Reverse gradient on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); /* Glow effect on hover */
+}
+
