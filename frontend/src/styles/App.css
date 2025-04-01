@@ -1,0 +1,363 @@
+/* Reset all margins, padding, and box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure HTML, body, and root take full height and width */
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  background-color: #000000; /* Black background for the entire page */
+  overflow: auto; /* Ensure the page can scroll if content overflows */
+}
+
+/* App container to ensure full height */
+.app-container {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #000000;
+}
+
+/* Main container styling */
+main {
+  min-height: 100vh; /* Ensure it takes at least the full viewport height */
+  width: 100%;
+  background-color: #000000; /* Black background */
+  position: relative;
+  overflow: auto; /* Allow scrolling if content overflows */
+  display: flex;
+  flex-direction: column; /* Stack navbar and content vertically */
+}
+
+/* Navbar styling (ChatGPT-like) */
+.navbar {
+  width: 100%;
+  background-color: #1a1a1a; /* Dark background similar to ChatGPT */
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100; /* Ensure navbar stays above other content */
+}
+
+/* Navbar brand/logo */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Navbar links/buttons container */
+.navbar-links {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Navbar buttons */
+.navbar-btn {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 0.7rem;
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-btn:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb); /* Reverse gradient on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Sign Out button specific styling */
+.navbar-btn.signout-btn {
+  background: linear-gradient(135deg, #cb1111, #fc2525); /* Red gradient for sign out */
+}
+
+.navbar-btn.signout-btn:hover {
+  background: linear-gradient(135deg, #fc2525, #cb1111);
+}
+
+/* Content container for CodeEditor and CodeReview */
+.content {
+  flex: 1; /* Take remaining space below navbar */
+  display: flex;
+  flex-direction: row; /* Default to row for larger screens */
+  gap: 1rem; /* Space between left and right sections */
+  padding: 1.5rem;
+}
+
+/* Glowing Stars Background for Main */
+main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: -1;
+  pointer-events: none;
+  animation: glowingStars 10s infinite linear;
+}
+
+@keyframes glowingStars {
+  0% {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.5)" /><circle cx="50" cy="20" r="1" fill="rgba(255,255,255,0.7)" /><circle cx="80" cy="60" r="1.5" fill="rgba(255,255,255,0.6)" /><circle cx="30" cy="70" r="1" fill="rgba(255,255,255,0.8)" /><circle cx="60" cy="40" r="2" fill="rgba(255,255,255,0.5)" /></svg>')
+      repeat;
+    background-size: 100px 100px;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    background-position: 100px 100px;
+    opacity: 0.3;
+  }
+}
+
+/* Left and right sections */
+main .left,
+main .right {
+  flex-basis: 50%; /* Each section takes 50% of the width */
+  border-radius: 0.7rem; /* Rounded corners */
+  background-color: #0c0c0c; /* Dark gray background */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for light effect */
+  position: relative; /* Ensure the review button positions relative to this */
+  overflow: hidden; /* Changed to hidden to prevent double scrollbars */
+  display: flex;
+  flex-direction: column; /* Ensure content inside stacks vertically */
+}
+
+/* Glowing light effect for sections */
+main .left::after,
+main .right::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+  animation: rotateLight 10s linear infinite;
+  pointer-events: none;
+  z-index: 0; /* Ensure it's behind the content */
+}
+
+@keyframes rotateLight {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Left section styling */
+main .left {
+  background-color: #000000; /* Black background */
+}
+
+/* Code editor styling */
+.left .code {
+  flex: 1; /* Allow the code editor to take available space */
+  max-height: none; /* Remove max-height to allow full growth */
+  min-height: 200px; /* Match Editor's minHeight */
+  overflow-y: auto; /* Allow scrolling */
+  border-radius: 0.7rem; /* Rounded corners */
+  background-color: #0c0c0c; /* Dark gray background */
+  color: #ffffff; /* White text */
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 1rem;
+  position: relative;
+  z-index: 1; /* Ensure code content is above the glowing effect */
+}
+
+.code pre,
+.code pre code {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background-color: transparent; /* Match parent background */
+  color: inherit; /* Match parent text color */
+}
+
+/* Editor-specific styles (to override inline styles if needed) */
+.left .code > div {
+  border: 1px solid rgba(255, 255, 255, 0.2) !important; /* Override inline border */
+  border-radius: 5px !important;
+  min-height: 200px !important;
+  width: 100% !important;
+  overflow: auto !important; /* Allow scrolling */
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+
+/* Review button styling (floating within CodeEditor section) */
+main .left .review-btn {
+  position: fixed; /* Stick to the screen */
+  bottom: 2.5rem; /* Stay at the bottom */
+  left: 16cm; /* Move to the left */
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #ffffff;
+  padding: 0.5rem 2rem;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 0.7rem;
+  border: none;
+  transition: all 0.3s ease;
+  z-index: 999; /* Ensure it's above other elements */
+}
+
+
+
+main .left .review-btn:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb); /* Reverse gradient on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); /* Glow effect on hover */
+}
+
+/* Right section styling */
+main .right {
+  background-color: #0c0c0c; /* Dark gray background */
+  padding: 1rem 2rem;
+  font-size: 1.2rem; /* Reduced font size for better alignment */
+  overflow-y: auto; /* Enable scrolling if content overflows */
+  color: #ffffff; /* White text */
+  position: relative;
+  z-index: 1; /* Ensure content is above the glowing effect */
+}
+
+/* Markdown content styling */
+main .right > div {
+  width: 100%;
+}
+
+/* Style for Markdown headings */
+main .right h1,
+main .right h2,
+main .right h3 {
+  margin: 1rem 0 0.5rem;
+  color: #ffffff;
+}
+
+/* Style for Markdown paragraphs */
+main .right p {
+  margin: 0.5 Wrem 0;
+  line-height: 1.6;
+}
+
+/* Style for Markdown lists */
+main .right ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+main .right ul li {
+  margin: 0.3rem 0;
+}
+
+/* Style for highlighted code blocks in Markdown */
+main .right pre,
+main .right code {
+  background-color: #1a1a1a;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  overflow-x: auto;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a; /* Dark track */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6a11cb; /* Purple thumb */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2575fc; /* Blue thumb on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  main {
+    padding: 0; /* Remove padding to maximize space */
+  }
+
+  .navbar {
+    padding: 0.5rem 1rem; /* Reduce padding on smaller screens */
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem; /* Reduce font size */
+  }
+
+  .navbar-links {
+    gap: 0.5rem; /* Reduce gap between buttons */
+  }
+
+  .navbar-btn {
+    padding: 0.4rem 1rem; /* Reduce button padding */
+    font-size: 0.9rem; /* Reduce font size */
+  }
+
+  .content {
+    flex-direction: column; /* Stack sections vertically on smaller screens */
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  main .left,
+  main .right {
+    flex-basis: 100%; /* Take full width */
+    height: auto; /* Allow height to adjust based on content */
+    min-height: 300px; /* Ensure a minimum height for visibility */
+  }
+
+  main .left .review-btn {
+    position: static; /* Remove absolute positioning on smaller screens */
+    margin: 1rem auto; /* Center the button */
+    display: block;
+    padding: 0.4rem 1.5rem; /* Reduce padding */
+    font-size: 0.9rem 1rem; /* Adjust font size */
+  }
+
+  main .right {
+    padding: 1rem;
+    font-size: 1rem; /* Further reduce font size for better fit */
+  }
+
+  .left .code {
+    min-height: 150px; /* Reduce min-height for smaller screens */
+  }
+
+  .left .code > div {
+    min-height: 150px !important; /* Override inline style */
+  }
+}
